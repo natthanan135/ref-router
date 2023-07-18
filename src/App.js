@@ -65,24 +65,29 @@ function Index() {
 function Product() {
   const table = useRef();
   const tr = useRef([]);
+  const DeleteRow = (i) => {
+    const index = tr.current[i].rowIndex;
+    table.current.DeleteRow(index);
+  };
 
   const data = [
     ["กางเกงยีนส์", 1200],
     ["เสื้อยืด", 350],
     ["กางเกงขาสั้น", 450],
     ["หมวก", 500],
+    ["ไก่", 50],
   ];
 
   return (
     <>
       <Layout />
       <h4>Product</h4>
-      <Table striped border hover className="my-3" ref={table}>
+      <Table striped bordered hover className="my-3" ref={table}>
         <thead>
           <tr>
             <th>Product Name</th>
             <th>Price</th>
-            <th>#</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -96,7 +101,11 @@ function Product() {
               >
                 <td>{item[0]}</td>
                 <td>{item[1]}</td>
-                <td>{i}</td>
+                <td className="text-center">
+                  <Button variant="danger" onClick={() => DeleteRow(i)}>
+                    Delete
+                  </Button>
+                </td>
               </tr>
             );
           })}

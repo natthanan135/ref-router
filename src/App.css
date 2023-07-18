@@ -1,6 +1,10 @@
 .link {
-  color: rgb(237, 12, 12);
+  color: rgb(0, 0, 0);
 }
 .link:hover {
-  color: rgb(255, 156, 56);
+  color: rgb(158, 155, 155);
+}
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: rgb(8, 252, 8);
 }
