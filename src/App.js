@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Contact from "./Contact";
-import { Container, Button } from "react-bootstrap";
+import { Container, Button, Table } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 
 export function Layout() {
@@ -63,10 +63,45 @@ function Index() {
 }
 
 function Product() {
+  const table = useRef();
+  const tr = useRef([]);
+
+  const data = [
+    ["กางเกงยีนส์", 1200],
+    ["เสื้อยืด", 350],
+    ["กางเกงขาสั้น", 450],
+    ["หมวก", 500],
+  ];
+
   return (
     <>
       <Layout />
       <h4>Product</h4>
+      <Table striped border hover className="my-3" ref={table}>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, i) => {
+            return (
+              <tr
+                ref={(el) => {
+                  tr.current[i] = el;
+                }}
+                ker={i}
+              >
+                <td>{item[0]}</td>
+                <td>{item[1]}</td>
+                <td>{i}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
     </>
   );
 }
