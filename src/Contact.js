@@ -1,20 +1,22 @@
 import React from "react";
 import { Layout } from "./App";
 
-function contact() {
+function Contact() {
   return (
     <>
       <Layout />
       <h3>Ubon Ratchathani University</h3>
       <div>
-        85 ถนนสถลมาร์ค <br />
-        ตำบลเมืองศรีไค <br />
-        อำเภอวารินชำราบ <br />
-        จังหวัดอุบลราชธานี
+        85 Sathonlamark Road
         <br />
-        34190
+        Warin Chamrap District
         <br />
+        Ubon Ratchathani
+        <br />
+        Thailand 34190
       </div>
     </>
   );
 }
+
+export default Contact;
