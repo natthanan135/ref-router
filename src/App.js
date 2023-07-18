@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Contact from "./Contact";
@@ -45,11 +46,18 @@ export function Layout() {
 }
 
 function Index() {
+  const header1 = useRef();
   return (
     <>
       <Layout />
-      <h3>Hello</h3>
-      <Button>Clik Me</Button>
+      <h3 ref={header1}>Hello</h3>
+      <Button
+        onClick={() => {
+          header1.current.innerHTML = "React";
+        }}
+      >
+        Clik Me
+      </Button>
     </>
   );
 }
