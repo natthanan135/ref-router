@@ -1,24 +1,68 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import { Container, Button } from "react-bootstrap";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+
+export function Layout() {
+  return (
+    <nav className="be-secondary p-2 md-3 text-center">
+      <NavLink
+        to="/"
+        className="link px-2"
+        style={({ isActive }) => {
+          return {
+            textDecoration: isActive ? "none" : "underline",
+          };
+        }}
+      >
+        Main
+      </NavLink>
+      <NavLink
+        to="/product"
+        className="link px-2"
+        style={({ isActive }) => {
+          return {
+            textDecoration: isActive ? "none" : "underline",
+          };
+        }}
+      >
+        Product
+      </NavLink>
+    </nav>
+  );
+}
+
+function Index() {
+  return (
+    <>
+      <Layout />
+      <h3>Hello</h3>
+      <Button>Clik Me</Button>
+    </>
+  );
+}
+
+function Product() {
+  return (
+    <>
+      <Layout />
+      <h4>Product</h4>
+    </>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Container className="p-3 my-3 bg-green">
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/main" element={<Index />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/contact" element={<></>} />
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
 }
 
