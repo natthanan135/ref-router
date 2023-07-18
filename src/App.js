@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import Contact from "./Contact";
 import { Container, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 
@@ -27,6 +28,17 @@ export function Layout() {
         }}
       >
         Product
+      </NavLink>
+      <NavLink
+        to="/Contact"
+        className="link px-2"
+        style={({ isActive }) => {
+          return {
+            textDecoration: isActive ? "none" : "underline",
+          };
+        }}
+      >
+        Contact Us
       </NavLink>
     </nav>
   );
@@ -59,7 +71,7 @@ function App() {
           <Route path="/" element={<Index />} />
           <Route path="/main" element={<Index />} />
           <Route path="/product" element={<Product />} />
-          <Route path="/contact" element={<></>} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Container>
     </BrowserRouter>
